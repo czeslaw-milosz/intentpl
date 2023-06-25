@@ -2,8 +2,8 @@ from setuptools import find_packages
 from setuptools import setup
 
 setup(
-    name="clickbait",
-    version="0.0",
+    name="intention",
+    version="0.0.0",
     description="Final project for NLP 2023 course @ MIM UW: "
                 "Intent classification on MASSIVE dataset.",
     author="ASDF",
@@ -14,7 +14,8 @@ setup(
         "matplotlib",
         "torch",
         "transformers",
-        "datasets"
+        "datasets",
+        "evaluate"
     ],
     setup_requires=['wheel']
 )
