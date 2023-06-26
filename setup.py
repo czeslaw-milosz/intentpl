@@ -15,7 +15,8 @@ setup(
         "torch",
         "transformers",
         "datasets",
-        "evaluate"
+        "evaluate",
+        'sacremoses'
     ],
     setup_requires=['wheel']
 )

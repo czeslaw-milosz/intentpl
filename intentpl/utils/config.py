@@ -1,10 +1,11 @@
+import transformers
 from dataclasses import dataclass, field
 
 from typing import List
 
 
 @dataclass
-class Config:
+class DataConfig:
     MASSIVE_DATASET_NAME: str = "AmazonScience/massive"
     MASSIVE_LOCALE: str = "pl-PL"
     MASSIVE_UNUSED_COLUMNS: List[str] = field(default_factory = lambda: [
@@ -15,13 +16,52 @@ class Config:
         "slot_method",
         "judgments"
     ])
-
-    HERBERT_MODEL_NAME: str = "allegro/herbert-large-cased"
-    HERBERT_FINETUNING_LR: float = 2e-5
-    HERBERT_PER_DEVICE_TRAIN_BATCH_SIZE: int = 16
-    HERBERT_PER_DEVICE_EVAL_BATCH_SIZE: int = 16
-    HERBERT_NUM_EPOCHS: int = 2
-    HERBERT_WEIGHT_DECAY: float = 0.01
-
-
     TRAINING_OUTPUT_DIR: str = "../../resources"
+
+HERBERT_ARGS = {
+    "model_name": "allegro/herbert-base-cased",
+    "training_args": transformers.TrainingArguments(
+        learning_rate=2e-5,
+        per_device_train_batch_size=16,
+        per_device_eval_batch_size=16,
+        num_train_epochs=2,
+        weight_decay=0.01,
+        output_dir=DataConfig.TRAINING_OUTPUT_DIR,
+        evaluation_strategy="epoch",
+        save_strategy="epoch",
+        load_best_model_at_end=True,
+        push_to_hub=False,
+    )
+}
+
+
+#TODO finetune hyperparameters for mt5
+MT5_ARGS = transformers.TrainingArguments(
+    learning_rate=2e-5,
+    per_device_train_batch_size=16,
+    per_device_eval_batch_size=16,
+    num_train_epochs=2,
+    weight_decay=0.01,
+    output_dir=DataConfig.TRAINING_OUTPUT_DIR,
+    evaluation_strategy="epoch",
+    save_strategy="epoch",
+    load_best_model_at_end=True,
+    push_to_hub=False,
+)
+
+# TODO finetune hyperparameters for xlmr
+XLMR_ARGS = {
+    "MODEL_NAME": "xlm-roberta-base",
+    "TRAINING_ARGS": transformers.TrainingArguments(
+        learning_rate=2e-5,
+        per_device_train_batch_size=16,
+        per_device_eval_batch_size=16,
+        num_train_epochs=2,
+        weight_decay=0.01,
+        output_dir=DataConfig.TRAINING_OUTPUT_DIR,
+        evaluation_strategy="epoch",
+        save_strategy="epoch",
+        load_best_model_at_end=True,
+        push_to_hub=False,
+    )
+}
