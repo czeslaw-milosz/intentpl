@@ -55,7 +55,6 @@ if __name__ == "__main__":
         eval_dataset=tokenized_dataset["validation"],
         tokenizer=tokenizer,
         data_collator=data_collator,
-        compute_metrics=functools.partial(
-            eval_utils.compute_metrics, metrics=("accuracy", "f1")),
+        compute_metrics=eval_utils.compute_metrics,
     )
     trainer.train()
