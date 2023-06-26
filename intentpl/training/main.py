@@ -5,4 +5,4 @@ from intentpl.training import train
 
 
 if __name__ == "__main__":
-    train.run(MT5_ARGS)
+    train.run_train(MT5_ARGS)

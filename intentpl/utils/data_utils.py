@@ -1,10 +1,10 @@
 import datasets
 from datasets.dataset_dict import DatasetDict
 
-from intentpl.utils.config import Config
+from intentpl.utils.config import DataConfig
 
 
-CONFIG = Config()
+CONFIG = DataConfig()
 
 
 def get_dataset_for_classification(
