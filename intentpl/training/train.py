@@ -56,6 +56,6 @@ if __name__ == "__main__":
         tokenizer=tokenizer,
         data_collator=data_collator,
         compute_metrics=functools.partial(
-            eval_utils.compute_metrics, metric="accuracy"),
+            eval_utils.compute_metrics, metrics=("accuracy", "f1")),
     )
     trainer.train()
