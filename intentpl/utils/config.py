@@ -34,20 +34,22 @@ HERBERT_ARGS = {
     )
 }
 
-
 #TODO finetune hyperparameters for mt5
-MT5_ARGS = transformers.TrainingArguments(
-    learning_rate=2e-5,
-    per_device_train_batch_size=16,
-    per_device_eval_batch_size=16,
-    num_train_epochs=2,
-    weight_decay=0.01,
-    output_dir=DataConfig.TRAINING_OUTPUT_DIR,
-    evaluation_strategy="epoch",
-    save_strategy="epoch",
-    load_best_model_at_end=True,
-    push_to_hub=False,
-)
+MT5_ARGS = {
+    "MODEL_NAME": "google/mt5-base",
+    "TRAINING_ARGS": transformers.TrainingArguments(
+        learning_rate=2e-5,
+        per_device_train_batch_size=16,
+        per_device_eval_batch_size=16,
+        num_train_epochs=2,
+        weight_decay=0.01,
+        output_dir=DataConfig.TRAINING_OUTPUT_DIR,
+        evaluation_strategy="epoch",
+        save_strategy="epoch",
+        load_best_model_at_end=True,
+        push_to_hub=False,
+    )
+}
 
 # TODO finetune hyperparameters for xlmr
 XLMR_ARGS = {
