@@ -16,7 +16,9 @@ setup(
         "transformers",
         "datasets",
         "evaluate",
-        'sacremoses'
+        'sacremoses',
+        'sentencepiece',
+        'protobuf==3.20'
     ],
     setup_requires=['wheel']
 )

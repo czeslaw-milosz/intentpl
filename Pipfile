@@ -11,6 +11,8 @@ datasets = "*"
 evaluate = "*"
 sacremoses = "*"
 sklearn = "*"
+sentencepiece = "*"
+protobuf = "*"
 scikit-learn = "*"
 transformers = {extras = ["torch"], version = "*"}
 
